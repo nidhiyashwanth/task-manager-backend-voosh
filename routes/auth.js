@@ -51,7 +51,7 @@ router.get('/google/callback',
   (req, res) => {
     // Successful authentication, create JWT token and redirect to frontend
     const token = jwt.sign({ userId: req.user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-    res.redirect(`http://localhost:3000/auth-success?token=${token}&userId=${req.user._id}`);
+    res.redirect(`${process.env.FRONTEND_URL}/auth-success?token=${token}&userId=${req.user._id}`);
   }
 );
 
